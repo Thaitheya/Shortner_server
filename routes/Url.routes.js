@@ -3,6 +3,16 @@ const { nanoid } = require("nanoid");
 const Url = require("../models/Url.model");
 
 const app = express.Router();
+router.get("/all", async (req, res) => {
+  try {
+    const urls = await Url.find();
+    res.status(200).json(urls);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 app.post("/shorten", async (req, res) => {
     const { originalUrl } = req.body;
