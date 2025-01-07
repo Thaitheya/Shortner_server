@@ -3,7 +3,7 @@ const { nanoid } = require("nanoid");
 const Url = require("../models/Url.model");
 
 const app = express.Router();
-router.get("/all", async (req, res) => {
+app.get("/all", async (req, res) => {
   try {
     const urls = await Url.find();
     res.status(200).json(urls);
